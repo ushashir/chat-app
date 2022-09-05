@@ -60,6 +60,15 @@ userSchema.statics.deleteByUserById = async function (id) {
   } catch (error) {
     throw error;
   }
-};1                                           
+};
+
+userSchema.statics.getUserByIds = async function (ids) {
+  try {
+    const users = await this.find({ _id: { $in: ids } });
+    return users;
+  } catch (error) {
+    throw error;
+  }
+};
 
 export default mongoose.model("User", userSchema);
